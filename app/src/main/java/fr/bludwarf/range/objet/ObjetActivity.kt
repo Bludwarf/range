@@ -28,8 +28,8 @@ class ObjetActivity : AppCompatActivity() {
             nomSaisi.setText(objet.nom)
         })
 
-        if (intent.hasExtra(ID_OBJET_MODIFIE)) {
-            val id = intent.getIntExtra(ID_OBJET_MODIFIE, 0)
+        val id = if (intent.hasExtra(ID_OBJET_MODIFIE)) intent.getIntExtra(ID_OBJET_MODIFIE, 0) else null
+        if (id != null) {
             objetViewModel.load(id)
         }
 
@@ -40,13 +40,12 @@ class ObjetActivity : AppCompatActivity() {
             } else {
                 val nom = nomSaisi.text.toString()
 
-                // FIXME comment récupérer l'objet courant ?
-                if (intent.hasExtra(ID_OBJET_MODIFIE)) {
-                    val id = intent.getIntExtra(ID_OBJET_MODIFIE, 0)
-                    objetViewModel.modifier(Objet(id, nom))
-                    replyIntent.putExtra(ID_OBJET_MODIFIE, id)
+                // TODO doit-on recréer un nouvel objet ou y a-t-il une autre méthode ?
+                val objet = Objet(id, nom)
+                if (id != null) {
+                    objetViewModel.modifier(objet)
                 } else {
-                    replyIntent.putExtra(NOM_NOUVEL_OBJET, nom)
+                    objetViewModel.inserer(objet)
                 }
 
                 setResult(Activity.RESULT_OK, replyIntent)
@@ -56,7 +55,6 @@ class ObjetActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val NOM_NOUVEL_OBJET = "fr.bludwarf.range.objet.NOM_NOUVEL_OBJET"
         const val ID_OBJET_MODIFIE = "fr.bludwarf.range.objet.ID_OBJET_MODIFIE"
     }
 }

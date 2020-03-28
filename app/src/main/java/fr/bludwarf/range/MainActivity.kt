@@ -1,6 +1,5 @@
 package fr.bludwarf.range
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
@@ -10,7 +9,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import fr.bludwarf.range.objet.Objet
 import fr.bludwarf.range.objet.ObjetActivity
 import fr.bludwarf.range.objets.ObjetsAdapter
 import fr.bludwarf.range.objets.ObjetsViewModel
@@ -70,20 +68,5 @@ class MainActivity : AppCompatActivity() {
     // https://codelabs.developers.google.com/codelabs/android-room-with-a-view-kotlin/#13
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-
-        if (resultCode == Activity.RESULT_OK) {
-            when (requestCode) {
-                nouvelObjetActivityRequestCode -> data?.getStringExtra(ObjetActivity.NOM_NOUVEL_OBJET)?.let {
-                    val objet = Objet(null, it)
-                    objetsViewModel.inserer(objet)
-                }
-//                modifierObjetActivityRequestCode -> data?.getIntExtra(ObjetActivity.ID_OBJET_MODIFIE, 0)?.let {
-//                    if (it != 0) {
-//                        val objet = objetsViewModel.get(it)
-//                        objetsViewModel.modifier(objet)
-//                    }
-//                }
-            }
-        }
     }
 }
