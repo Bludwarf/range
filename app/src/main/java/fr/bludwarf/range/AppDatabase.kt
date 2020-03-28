@@ -8,34 +8,10 @@ import fr.bludwarf.range.objet.Objet
 import fr.bludwarf.range.objet.ObjetDao
 import kotlinx.coroutines.CoroutineScope
 
+
 @Database(entities = [Objet::class], version = 1)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun objetDao(): ObjetDao
-
-//    private class AppDatabaseCallback(
-//        private val scope: CoroutineScope
-//    ) : RoomDatabase.Callback() {
-//
-//        override fun onOpen(db: SupportSQLiteDatabase) {
-//            super.onOpen(db)
-//            INSTANCE?.let { database ->
-//                scope.launch {
-//                    populateDatabase(database.objetDao())
-//                }
-//            }
-//        }
-//
-//        suspend fun populateDatabase(objetDao: ObjetDao) {
-//            // Delete all content here.
-//            objetDao.toutSupprimer()
-//
-//            // Add sample objets.
-//            var objet = Objet(1, "Objet 1")
-//            objetDao.inserer(objet)
-//            objet = Objet(2, "Objet 2")
-//            objetDao.inserer(objet)
-//        }
-//    }
 
     // https://codelabs.developers.google.com/codelabs/android-room-with-a-view-kotlin/#6
     companion object {
@@ -53,7 +29,6 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "app_database"
                 )
-//                    .addCallback(AppDatabaseCallback(scope))
                     .build()
 
                 INSTANCE = instance

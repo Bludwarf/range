@@ -4,4 +4,5 @@
     <string name="add_message">Create a new object</string>
     <string name="objet_nom">Object name</string>
     <string name="objet_ajouter">Add</string>
+    <string name="objet_modifier">Edit Object</string>
 </resources>

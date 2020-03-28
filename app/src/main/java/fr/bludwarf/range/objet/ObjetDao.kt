@@ -1,10 +1,7 @@
 package fr.bludwarf.range.objet
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface ObjetDao {
@@ -14,4 +11,8 @@ interface ObjetDao {
     suspend fun inserer(objet: Objet)
     @Query("DELETE FROM objet")
     suspend fun toutSupprimer()
+    @Update
+    suspend fun modifier(objet: Objet)
+    @Query("SELECT * FROM objet WHERE id = :id")
+    suspend fun get(id: Int): Objet
 }

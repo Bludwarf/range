@@ -5,4 +5,5 @@
     <string name="add_message">Crée un nouvel objet</string>
     <string name="objet_nom">Nom de l\'objet</string>
     <string name="objet_ajouter">Ajouter</string>
+    <string name="objet_modifier">Modifier l\'objet</string>
 </resources>

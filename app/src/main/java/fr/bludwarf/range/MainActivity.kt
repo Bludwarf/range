@@ -11,14 +11,17 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import fr.bludwarf.range.objet.Objet
-import fr.bludwarf.range.objet.ObjetListAdapter
-import fr.bludwarf.range.objet.ObjetViewModel
+import fr.bludwarf.range.objet.ObjetActivity
+import fr.bludwarf.range.objets.ObjetsAdapter
+import fr.bludwarf.range.objets.ObjetsViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var objetViewModel: ObjetViewModel
+    private lateinit var objetsViewModel: ObjetsViewModel
     private val nouvelObjetActivityRequestCode = 1
+    private val modifierObjetActivityRequestCode = 2
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,19 +30,23 @@ class MainActivity : AppCompatActivity() {
 
         // https://codelabs.developers.google.com/codelabs/android-room-with-a-view-kotlin/#10
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
-        val adapter = ObjetListAdapter(this)
+        val adapter = ObjetsAdapter(this) {
+            val intent = Intent(this, ObjetActivity::class.java)
+            intent.putExtra(ObjetActivity.ID_OBJET_MODIFIE, it.id)
+            startActivityForResult(intent, modifierObjetActivityRequestCode)
+        }
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         //https://codelabs.developers.google.com/codelabs/android-room-with-a-view-kotlin/#13
-        objetViewModel = ViewModelProvider(this).get(ObjetViewModel::class.java)
-        objetViewModel.tout.observe(this, Observer { objets ->
+        objetsViewModel = ViewModelProvider(this).get(ObjetsViewModel::class.java)
+        objetsViewModel.tout.observe(this, Observer { objets ->
             // Update the cached copy of the words in the adapter.
             objets?.let { adapter.setObjets(it) }
         })
 
         fab.setOnClickListener { view ->
-            val intent = Intent(this@MainActivity, CreationObjetActivity::class.java)
+            val intent = Intent(this@MainActivity, ObjetActivity::class.java)
             startActivityForResult(intent, nouvelObjetActivityRequestCode)
         }
     }
@@ -64,10 +71,18 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if (requestCode == nouvelObjetActivityRequestCode && resultCode == Activity.RESULT_OK) {
-            data?.getStringExtra(CreationObjetActivity.EXTRA_REPLY)?.let {
-                val objet = Objet(null, it)
-                objetViewModel.insert(objet)
+        if (resultCode == Activity.RESULT_OK) {
+            when (requestCode) {
+                nouvelObjetActivityRequestCode -> data?.getStringExtra(ObjetActivity.NOM_NOUVEL_OBJET)?.let {
+                    val objet = Objet(null, it)
+                    objetsViewModel.inserer(objet)
+                }
+//                modifierObjetActivityRequestCode -> data?.getIntExtra(ObjetActivity.ID_OBJET_MODIFIE, 0)?.let {
+//                    if (it != 0) {
+//                        val objet = objetsViewModel.get(it)
+//                        objetsViewModel.modifier(objet)
+//                    }
+//                }
             }
         }
     }

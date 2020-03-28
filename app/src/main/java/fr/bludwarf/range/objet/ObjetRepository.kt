@@ -14,4 +14,14 @@ class ObjetRepository(private val objetDao: ObjetDao) {
     suspend fun inserer(objet: Objet) {
         objetDao.inserer(objet)
     }
+
+    @WorkerThread
+    suspend fun modifier(objet: Objet) {
+        objetDao.modifier(objet)
+    }
+
+    @WorkerThread
+    suspend fun get(id: Int): Objet {
+        return objetDao.get(id)
+    }
 }
