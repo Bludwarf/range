@@ -13,7 +13,7 @@ class ObjetListAdapter internal constructor(
     context: Context
 ) : RecyclerView.Adapter<ObjetListAdapter.ObjetViewHolder>() {
 
-    private val inflater: LayoutInflater = LayoutInflater.from(context)
+    private val inflater = LayoutInflater.from(context)
     private var objets = emptyList<Objet>() // Cached copy of objets
 
     inner class ObjetViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
