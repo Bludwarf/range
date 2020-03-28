@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
         fab.setOnClickListener { view ->
             Toast.makeText(this@MainActivity, "Bien joué", Toast.LENGTH_LONG).show()
-            val intent = Intent(this, CreationObjet::class.java)
+            val intent = Intent(this, CreationObjetActivity::class.java)
             startActivity(intent)
 //            Snackbar.make(view, getString(R.string.add_message), Snackbar.LENGTH_LONG)
 //                    .setAction("Action", null).show()
