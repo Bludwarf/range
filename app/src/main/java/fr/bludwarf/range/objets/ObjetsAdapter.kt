@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import fr.bludwarf.range.R
@@ -22,7 +21,6 @@ class ObjetsAdapter internal constructor(
 
     inner class ObjetViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val objetItemView: TextView = itemView.findViewById(R.id.textView)
-        val imageButton: ImageButton = itemView.findViewById(R.id.imageButton)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ObjetViewHolder {
@@ -33,7 +31,7 @@ class ObjetsAdapter internal constructor(
     override fun onBindViewHolder(holder: ObjetViewHolder, position: Int) {
         val objetCourant = objets[position]
         holder.objetItemView.text = objetCourant.nom
-        holder.imageButton.setOnClickListener {
+        holder.objetItemView.setOnClickListener {
             editerObjet(objetCourant)
         }
     }
