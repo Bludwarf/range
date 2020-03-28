@@ -9,17 +9,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-light"
-        android:hint="Nom de l'objet"
+        android:hint="@string/objet_nom"
         android:inputType="textAutoComplete"
         android:layout_margin="@dimen/big_padding"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:autofillHints="@string/objet_nom"/>
 
     <Button
         android:id="@+id/button_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimary"
-        android:text="Ajouter"
+        android:text="@string/objet_ajouter"
         android:layout_margin="@dimen/big_padding"
         android:textColor="@color/buttonLabel" />
 
