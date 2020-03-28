@@ -1,5 +1,6 @@
 package fr.bludwarf.range.objet
 
+import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 
 // https://codelabs.developers.google.com/codelabs/android-room-with-a-view-kotlin/#7
@@ -9,6 +10,7 @@ class ObjetRepository(private val objetDao: ObjetDao) {
     // Observed LiveData will notify the observer when the data has changed.
     val tout: LiveData<List<Objet>> = objetDao.tout()
 
+    @WorkerThread
     suspend fun inserer(objet: Objet) {
         objetDao.inserer(objet)
     }
