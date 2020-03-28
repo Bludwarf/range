@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -67,14 +66,9 @@ class MainActivity : AppCompatActivity() {
 
         if (requestCode == nouvelObjetActivityRequestCode && resultCode == Activity.RESULT_OK) {
             data?.getStringExtra(CreationObjetActivity.EXTRA_REPLY)?.let {
-                val objet = Objet(0, it) // FIXME original errored code : Objet(it)
+                val objet = Objet(null, it)
                 objetViewModel.insert(objet)
             }
-        } else {
-            Toast.makeText(
-                applicationContext,
-                "Nom vide",
-                Toast.LENGTH_LONG).show()
         }
     }
 }
