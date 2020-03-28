@@ -11,4 +11,6 @@ interface ObjetDao {
     fun tout(): LiveData<List<Objet>>
     @Insert
     suspend fun inserer(objet: Objet)
+    @Query("DELETE FROM objet")
+    suspend fun toutSupprimer()
 }

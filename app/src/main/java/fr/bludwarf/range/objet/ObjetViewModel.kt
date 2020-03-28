@@ -19,7 +19,7 @@ class ObjetViewModel(application: Application) : AndroidViewModel(application) {
     init {
         // Gets reference to ObjetDao from ObjetRoomDatabase to construct
         // the correct ObjetRepository.
-        val objetDao = AppDatabase.getDatabase(application).objetDao()
+        val objetDao = AppDatabase.getDatabase(application, viewModelScope).objetDao()
         repository = ObjetRepository(objetDao)
         tout = repository.tout
     }
