@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
+import fr.bludwarf.range.AppDatabase
 import kotlinx.coroutines.launch
 
 // https://codelabs.developers.google.com/codelabs/android-room-with-a-view-kotlin/#8
@@ -18,7 +19,7 @@ class ObjetViewModel(application: Application) : AndroidViewModel(application) {
     init {
         // Gets reference to ObjetDao from ObjetRoomDatabase to construct
         // the correct ObjetRepository.
-        val objetDao = ObjetDatabase.getDatabase(application, viewModelScope).objetDao()
+        val objetDao = AppDatabase.getDatabase(application, viewModelScope).objetDao()
         repository = ObjetRepository(objetDao)
         tout = repository.tout
     }
