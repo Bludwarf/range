@@ -1,4 +1,3 @@
 <resources>
     <dimen name="big_padding">16dp</dimen>
-    <dimen name="button">32dp</dimen>
 </resources>

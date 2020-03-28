@@ -65,8 +65,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    // https://codelabs.developers.google.com/codelabs/android-room-with-a-view-kotlin/#13
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-    }
 }
