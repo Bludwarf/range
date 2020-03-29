@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import fr.bludwarf.range.objet.Objet
 import fr.bludwarf.range.objet.ObjetActivity
 import fr.bludwarf.range.objets.ObjetsAdapter
 import fr.bludwarf.range.objets.ObjetsViewModel
@@ -28,11 +29,12 @@ class MainActivity : AppCompatActivity() {
 
         // https://codelabs.developers.google.com/codelabs/android-room-with-a-view-kotlin/#10
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
-        val adapter = ObjetsAdapter(this) {
+        val editerObjet: (Objet) -> Unit = {
             val intent = Intent(this, ObjetActivity::class.java)
             intent.putExtra(ObjetActivity.ID_OBJET_MODIFIE, it.id)
             startActivityForResult(intent, modifierObjetActivityRequestCode)
         }
+        val adapter = ObjetsAdapter(this, editerObjet)
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
 
