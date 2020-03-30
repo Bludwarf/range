@@ -20,8 +20,8 @@ class SearchResultsAdapter internal constructor(
     private var objets = emptyList<Objet>() // Cached copy of objets
 
     inner class ObjetViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val nomObjetView: TextView = itemView.findViewById(R.id.search_result_nom)
-        val itemLayout: LinearLayout = itemView.findViewById(R.id.search_result_itemLayout)
+        val nomObjetView: TextView = itemView.findViewById(R.id.nom)
+        val itemLayout: LinearLayout = itemView.findViewById(R.id.itemLayout)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ObjetViewHolder {

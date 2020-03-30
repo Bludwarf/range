@@ -38,7 +38,7 @@ class SearchResultsActivity : AppCompatActivity() {
             // TODO lien avec la AppDatabase
 
             // https://codelabs.developers.google.com/codelabs/android-room-with-a-view-kotlin/#10
-            val recyclerView = findViewById<RecyclerView>(R.id.recyclerview_search_results)
+            val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
             val adapter = SearchResultsAdapter(this)
             recyclerView.adapter = adapter
             recyclerView.layoutManager = LinearLayoutManager(this)

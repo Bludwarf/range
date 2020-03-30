@@ -4,10 +4,10 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/search_result_itemLayout">
+    android:id="@+id/itemLayout">
 
     <TextView
-        android:id="@+id/search_result_nom"
+        android:id="@+id/nom"
         style="@style/word_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
