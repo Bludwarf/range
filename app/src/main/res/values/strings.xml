@@ -5,4 +5,6 @@
     <string name="objet_nom">Object name</string>
     <string name="objet_ajouter">Add</string>
     <string name="objet_modifier">Edit Object</string>
+    <string name="search_title">Search</string>
+    <string name="search_hint">Search objects</string>
 </resources>

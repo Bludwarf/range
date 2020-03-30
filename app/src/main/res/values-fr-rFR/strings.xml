@@ -6,4 +6,6 @@
     <string name="objet_nom">Nom de l\'objet</string>
     <string name="objet_ajouter">Ajouter</string>
     <string name="objet_modifier">Modifier l\'objet</string>
+    <string name="search_title">Rechercher</string>
+    <string name="search_hint">Rechercher un objet</string>
 </resources>
