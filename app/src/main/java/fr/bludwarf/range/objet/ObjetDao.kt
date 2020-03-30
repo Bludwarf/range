@@ -15,4 +15,6 @@ interface ObjetDao {
     suspend fun modifier(objet: Objet)
     @Query("SELECT * FROM objet WHERE id = :id")
     suspend fun get(id: Int): Objet
+    @Query("SELECT * FROM objet WHERE LOWER(nom) LIKE :nomEnMinuscule")
+    suspend fun rechercher(nomEnMinuscule: String): List<Objet>
 }

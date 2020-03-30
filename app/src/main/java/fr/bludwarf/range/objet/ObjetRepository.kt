@@ -2,6 +2,7 @@ package fr.bludwarf.range.objet
 
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
+import java.util.*
 
 // https://codelabs.developers.google.com/codelabs/android-room-with-a-view-kotlin/#7
 class ObjetRepository(private val objetDao: ObjetDao) {
@@ -23,5 +24,10 @@ class ObjetRepository(private val objetDao: ObjetDao) {
     @WorkerThread
     suspend fun get(id: Int): Objet {
         return objetDao.get(id)
+    }
+
+    @WorkerThread
+    suspend fun rechercher(nom: String): List<Objet> {
+        return objetDao.rechercher("%$nom%".toLowerCase(Locale.getDefault()))
     }
 }

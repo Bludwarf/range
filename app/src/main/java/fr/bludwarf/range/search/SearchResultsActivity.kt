@@ -32,10 +32,6 @@ class SearchResultsActivity : AppCompatActivity() {
 
         if (Intent.ACTION_SEARCH == intent.action) {
             val query = intent.getStringExtra(SearchManager.QUERY)
-            //use the query to search your data somehow
-            Toast.makeText(this@SearchResultsActivity, query, Toast.LENGTH_LONG).show()
-
-            // TODO lien avec la AppDatabase
 
             // https://codelabs.developers.google.com/codelabs/android-room-with-a-view-kotlin/#10
             val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
@@ -49,6 +45,7 @@ class SearchResultsActivity : AppCompatActivity() {
                 // Update the cached copy of the words in the adapter.
                 objets?.let { adapter.setObjets(it) }
             })
+            searchResultsViewModel.rechercher(query)
         }
     }
 }
