@@ -7,4 +7,5 @@
     <string name="objet_modifier">Edit Object</string>
     <string name="search_title">Search</string>
     <string name="search_hint">Search objects</string>
+    <string name="texte_accueil">Add an object with the + button at the bottom right. Search with the magnifying glass at the top right.</string>
 </resources>

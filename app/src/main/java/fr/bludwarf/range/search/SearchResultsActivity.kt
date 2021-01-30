@@ -9,6 +9,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import fr.bludwarf.range.R
+import fr.bludwarf.range.objet.Objet
+import fr.bludwarf.range.objet.ObjetActivity
+import fr.bludwarf.range.objet.ObjetActivity.Companion.ID_OBJET_MODIFIE
 
 class SearchResultsActivity : AppCompatActivity() {
 
@@ -28,13 +31,12 @@ class SearchResultsActivity : AppCompatActivity() {
     }
 
     private fun handleIntent(intent: Intent) {
-
         if (Intent.ACTION_SEARCH == intent.action) {
             val query = intent.getStringExtra(SearchManager.QUERY)
 
             // https://codelabs.developers.google.com/codelabs/android-room-with-a-view-kotlin/#10
             val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
-            val adapter = SearchResultsAdapter(this)
+            val adapter = SearchResultAdapter(this) {objet -> onClickObjet(objet)}
             recyclerView.adapter = adapter
             recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -46,5 +48,11 @@ class SearchResultsActivity : AppCompatActivity() {
             })
             searchResultsViewModel.rechercher(query)
         }
+    }
+
+    private fun onClickObjet(objet: Objet) {
+        val intent = Intent(this, ObjetActivity()::class.java)
+        intent.putExtra(ID_OBJET_MODIFIE, objet.id)
+        startActivity(intent)
     }
 }

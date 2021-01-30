@@ -8,4 +8,5 @@
     <string name="objet_modifier">Modifier l\'objet</string>
     <string name="search_title">Rechercher</string>
     <string name="search_hint">Rechercher un objet</string>
+    <string name="texte_accueil">Ajoute un objet avec le bouton + en bas à droite. Recherche avec la loupe en haut à droite.</string>
 </resources>
